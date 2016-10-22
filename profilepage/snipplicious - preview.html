@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)http://bootstrap.snipplicious.com/snippets/preview/19?name=edit-profile-page -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="description" content="Edit Profiler page handcoded in pure Bootstrap 3. Suitable for any web application with user management.">
+
+	<title>snipplicious - preview</title>
+
+	<link rel="stylesheet" type="text/css" href="./snipplicious - preview_files/bootstrap-3.2.0.min.css">
+	<link rel="stylesheet" type="text/css" href="./snipplicious - preview_files/font-awesome-4.1.0.min.css">
+
+
+	<script src="./snipplicious - preview_files/quant.js.download" async="" type="text/javascript"></script><script src="./snipplicious - preview_files/jquery.js.download"></script>
+	<script src="./snipplicious - preview_files/bootstrap.min.js.download"></script>
+	<script type="text/javascript">
+      ( function() {
+        if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+        var unit = {"calltype":"async[2]","publisher":"werewolfrex","width":728,"height":90,"sid":"Chitika Default"};
+        var placement_id = window.CHITIKA.units.length;
+        window.CHITIKA.units.push(unit);
+        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+    }());
+    </script><script type="text/javascript" charset="UTF-8" src="./snipplicious - preview_files/ice.js.download" async=""></script><script type="text/javascript" charset="UTF-8" src="./snipplicious - preview_files/14753364223681"></script><script type="text/javascript" src="./snipplicious - preview_files/linx.js.download"></script><script type="text/javascript" src="./snipplicious - preview_files/highlight.js.download"></script><script type="text/javascript" src="http://psdata.chitika.net/extract?u=http%3A%2F%2Fbootstrap.snipplicious.com%2Fsnippets%2Fpreview%2F19%3Fname%3Dedit-profile-page&amp;c=LINX.main"></script><style type="text/css"></style><script type="text/javascript" charset="UTF-8" src="./snipplicious - preview_files/dcl.htm"></script><script type="text/javascript" charset="UTF-8" src="./snipplicious - preview_files/getads.htm"></script></head><body><div id="chitikaAdBlock-0" class="chitikaAdContainer"></div>
+    <script type="text/javascript" src="./snipplicious - preview_files/getads.js.download" async=""></script>
+	<script type="text/javascript">
+		var infolinks_pid = 2113816;
+		var infolinks_wsid = 1;
+	</script>
+	<script type="text/javascript" src="./snipplicious - preview_files/infolinks_main.js.download"></script><iframe width="1px" height="1px" src="./snipplicious - preview_files/user_sync.html" style="display: none;" nuan_newframe="true"></iframe><img src="./snipplicious - preview_files/getuid" width="0" height="0" style="display: none;"><iframe width="1px" height="1px" src="./snipplicious - preview_files/usersyncup-an.html" style="display: none;" nuan_newframe="true"></iframe>
+
+
+<div class="container" style="padding-top: 60px;">
+  <h1 class="page-header">Edit Profile</h1>
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="text-center">
+        <img src="./snipplicious - preview_files/saved_resource" class="avatar img-circle img-thumbnail" alt="avatar">
+        <h6>Upload a different photo...</h6>
+        <input type="file" class="text-center center-block well well-sm">
+      </div>
+    </div>
+    <!-- edit form column -->
+    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+      
+      <h3>Personal info</h3>
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">First name:</label>
+          <div class="col-lg-8">
+            <input class="form-control" value="Jane" type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Last name:</label>
+          <div class="col-lg-8">
+            <input class="form-control" value="Bishop" type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Company:</label>
+          <div class="col-lg-8">
+            <input class="form-control" value="" type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Email:</label>
+          <div class="col-lg-8">
+            <input class="form-control" value="janesemail@gmail.com" type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Time Zone:</label>
+          <div class="col-lg-8">
+            <div class="ui-select">
+              <select id="user_time_zone" class="form-control">
+                <option value="Hawaii">(GMT-10:00) Hawaii</option>
+                <option value="Alaska">(GMT-09:00) Alaska</option>
+                <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+                <option value="Arizona">(GMT-07:00) Arizona</option>
+                <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+                <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
+                <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Username:</label>
+          <div class="col-md-8">
+            <input class="form-control" value="janeuser" type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Password:</label>
+          <div class="col-md-8">
+            <input class="form-control" value="11111122333" type="password">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Confirm password:</label>
+          <div class="col-md-8">
+            <input class="form-control" value="11111122333" type="password">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+            <input class="btn btn-primary" value="Save Changes" type="button">
+            <span></span>
+            <input class="btn btn-default" value="Cancel" type="reset">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<input type="hidden" name="IL_IN_TAG" value="2"><div class="IL_BASE" style="margin: 0px auto; padding: 10px 0px; width: 1349px;">   <ul id="IL_IN_TAG_LIST_0_0" class="IL_BASE" style="display:block; width:1271px; height:19px; text-align:center; padding:0; margin:6px 0 0 0; font-size:0; overflow:hidden;"><li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD1" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Profile</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD2" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Photo</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD3" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Avatar Cast</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD4" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Bootstrap</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD5" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Edit Profile</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD6" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Make an avatar</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD7" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Management</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD8" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Personal Info</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD9" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Pure</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD10" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Suitable</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD11" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Profile</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD12" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Photo</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD13" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Avatar Cast</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD14" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Bootstrap</span></li>
+</ul>  <div id="IL_IN_TAG_LOGO_0" class="IL_BASE" style="float:right; margin-right:15px; margin-top:8px; width:53px; height:12px; cursor:pointer; font-size:1px; ">         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="53px" height="12px" viewBox="0 0 636 144" enable-background="new 0 0 636 144" xml:space="preserve">     <g>            <path id="IL_IN_TAG_LOGO_0_DOT1" fill="#208CE5" d="M16.918,24.865c5.848,0,10.57-4.735,10.57-10.583s-4.722-10.57-10.57-10.57 S6.334,8.434,6.334,14.282S11.07,24.865,16.918,24.865"></path>            <path fill="#003366" d="M88.085,43.784H77.024c-17.149,0-31.181,14.031-31.181,31.182v34.796 c0,0.218,0.016,0.415,0.027,0.618v5.185c0,5.71-4.672,10.382-10.382,10.382h-0.467c-5.71,0-10.382-4.672-10.382-10.382V92.608 h0.015V45.889v-0.025c0-1.124-0.885-2.033-2.01-2.08h-11.49c-1.09,0.047-1.949,0.907-1.986,1.996v46.828h0.04 c-0.015,0.355-0.04,0.707-0.04,1.066v22.246c0,14.031,11.479,25.512,25.511,25.512h1.151c14.031,0,25.511-11.48,25.511-25.512 v-5.466v-4.62v-28.89c0.082-9.872,8.159-17.948,18.031-17.948h6.366c9.871,0,17.948,8.076,18.042,17.948v28.89v4.62v28.873 c0.013,0.023,0.013,0.034,0.013,0.048c0,1.111,0.883,2.008,1.983,2.057h11.505c1.077-0.036,1.936-0.887,1.985-1.973v-27.966v-5.659 V74.966C119.267,57.815,105.234,43.784,88.085,43.784"></path>            <path fill="#003366" d="M155.069,56.972v82.643c-0.072,0.992-0.886,1.78-1.903,1.818h-11.014 c-1.062-0.038-1.912-0.897-1.912-1.962c0-0.024,0-0.048-0.023-0.073V34.456c0.716-17.064,14.923-30.744,32.179-30.744h8.536 c0.025,0,0.038,0.011,0.06,0.011c1.053,0,1.915,0.849,1.974,1.901v11.037c-0.035,1.016-0.85,1.844-1.878,1.889h-8.692 c-9.509,0-17.327,7.75-17.327,17.268v6.301V56.972z"></path>            <path fill="#003366" d="M151.99,59.104h28.873c0.023-0.012,0.034-0.012,0.047-0.012 c1.111,0,2.008-0.884,2.057-1.984V45.604c-0.036-1.078-0.887-1.938-1.973-1.986h-27.965"></path>            <path fill="#003366" d="M276.24,107.925h0.158V76.608c-0.37-18.164-15.248-32.825-33.494-32.825 h-16.756v0.022c-17.875,0.431-32.322,14.924-32.679,32.803h-0.026v31.316c0,18.213,14.601,33.064,32.705,33.496v0.012h16.589h0.021 h0.146C261.304,141.349,276.24,126.354,276.24,107.925 M208.93,107.925L208.93,107.925V77.289c0-9.914,8.096-18.02,18.021-18.02 h15.953c9.946,0,18.02,8.106,18.02,18.02v30.636h-0.167c0,9.949-8.074,18.021-17.999,18.021h-15.807 C217.026,125.946,208.93,117.874,208.93,107.925"></path>            <path fill="#003366" d="M312.844,139.376L312.844,139.376c0,1.064-0.798,1.938-1.829,2.045h-11.816 c-1.027-0.107-1.837-0.98-1.837-2.045h-0.013V5.769h0.013c0-1.135,0.908-2.033,2.031-2.057h11.432 c1.124,0.024,2.019,0.922,2.019,2.057V139.376z"></path>            <path id="IL_IN_TAG_LOGO_0_DOT2" fill="#208CE5" d="M341.662,24.865c5.848,0,10.57-4.735,10.57-10.583s-4.723-10.57-10.57-10.57 s-10.584,4.722-10.584,10.57S335.814,24.865,341.662,24.865"></path>            <path fill="#003366" d="M412.829,43.784h-11.061c-17.149,0-31.181,14.031-31.181,31.182v34.796 c0,0.218,0.016,0.415,0.026,0.618v5.185c0,5.71-4.672,10.382-10.382,10.382h-0.468c-5.71,0-10.382-4.672-10.382-10.382V92.608 h0.016V45.723v-0.025c0-1.123-0.885-2.033-2.01-2.08h-11.49c-1.091,0.047-1.949,0.908-1.986,1.996v46.994h0.04 c-0.015,0.355-0.04,0.707-0.04,1.066v22.246c0,14.031,11.479,25.512,25.512,25.512h1.15c14.031,0,25.512-11.48,25.512-25.512 v-5.466v-4.62v-28.89c0.082-9.872,8.158-17.948,18.029-17.948h6.367c9.871,0,17.947,8.076,18.041,17.948v28.89v4.62v28.873 c0.014,0.023,0.014,0.034,0.014,0.048c0,1.111,0.883,2.008,1.982,2.057h11.506c1.076-0.036,1.936-0.887,1.984-1.973v-27.966v-5.659 V74.966C444.01,57.815,429.979,43.784,412.829,43.784"></path>            <path fill="#003366" d="M480.277,139.376L480.277,139.376V91.735h0.146h9.255l40.656,48.766 c0.599,0.549,1.15,0.906,1.841,0.932h16.073c0.882-0.025,2.869-0.322,1.794-2.056l-0.013-0.024l-47.58-56.777l44.599-36.815 c0.015-0.049,0.015-0.049,0.036-0.073c1.066-1.734-0.886-2.032-1.78-2.069H527.08c-0.621,0.024-1.15,0.324-1.666,0.791 l-36.812,31.075h-8.325V5.769c0-1.135-0.896-2.033-2.02-2.057h-11.422c-1.124,0.024-2.033,0.922-2.033,2.057v133.607 c0,1.064,0.803,1.938,1.844,2.045h11.802C479.476,141.313,480.277,140.44,480.277,139.376"></path>            <path fill="#003366" d="M603.208,84.782H577.99c-6.91-0.114-12.508-5.785-12.508-12.783 c0-6.996,5.598-12.895,12.508-12.895h39.271c1.146,0,2.08-0.959,2.08-2.111v0.191V45.752v-0.037c0-1.164-0.935-2.097-2.08-2.097 H577.99c-15.451,0-28.008,12.73-28.008,28.381c0,15.651,12.557,28.381,28.008,28.27h24.252c6.911,0.111,12.508,5.812,12.508,12.795 c0,6.996-5.597,12.896-12.508,12.896H591.56l0.001-0.014h-28.874c-0.022,0.014-0.034,0.014-0.047,0.014 c-1.11,0-2.007,0.896-2.056,2.01v11.449c0.035,1.092,0.886,1.963,1.973,2.014h0.225h27.74h12.224 c15.209-0.279,27.491-12.9,27.491-28.369C630.236,97.737,618.191,85.202,603.208,84.782"></path>     </g>     </svg>       </div>         <ul id="IL_IN_TAG_LIST_0_1" class="IL_BASE" style="display:block; width:1271px; height:19px; text-align:center; padding:0; margin:6px 0 0 0; font-size:0; overflow:hidden;"><li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD15" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Edit Profile</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD16" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Make an avatar</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD17" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Management</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD18" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Personal Info</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD19" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Pure</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD20" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Suitable</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD21" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Profile</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD22" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Photo</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD23" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Avatar Cast</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD24" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Bootstrap</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD25" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Edit Profile</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD26" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Make an avatar</span></li>
+<li class="IL_BASE" style="display: inline; margin: 0px; padding: 0px; background: none; width: auto; float: none;"><span id="IL_IN_TAG_AD27" class="IL_BASE IL_IN_TAG_AD" style="padding: 0px 15px; font-weight: normal;">Management</span></li>
+</ul></div>
+
+<script type="text/javascript" src="./snipplicious - preview_files/quantcast.js.download"></script><div style="display:none !important">      <div style="display: ; position:absolute;top:0; left:0; width:728px; height:65px; background-color:#FFFFFF; cursor: pointer;">                                    <div style="position:absolute; width:728px; height:24px; left:15px; top:20px; color:#4E4E4E; font-family:Trebuchet MS,Arial,sans-serif; font-size:15pt; font-weight:normal; font-style:normal; "><span title="You might also like" style="color:#4E4E4E; font-weight: bold; font-size:15pt; overflow:hidden;">You might also like </span>                        </div>         <div style="position:absolute; top:4px;  right:47px; width:48px; height:11px; cursor:pointer; font-size:1px; ">             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48px" height="11px" viewBox="0 0 636 144" enable-background="new 0 0 636 144" xml:space="preserve">        <g>                  <path fill="#208CE5" d="M16.918,24.865c5.848,0,10.57-4.735,10.57-10.583s-4.722-10.57-10.57-10.57 S6.334,8.434,6.334,14.282S11.07,24.865,16.918,24.865"></path>                  <path fill="#003366" d="M88.085,43.784H77.024c-17.149,0-31.181,14.031-31.181,31.182v34.796 c0,0.218,0.016,0.415,0.027,0.618v5.185c0,5.71-4.672,10.382-10.382,10.382h-0.467c-5.71,0-10.382-4.672-10.382-10.382V92.608 h0.015V45.889v-0.025c0-1.124-0.885-2.033-2.01-2.08h-11.49c-1.09,0.047-1.949,0.907-1.986,1.996v46.828h0.04 c-0.015,0.355-0.04,0.707-0.04,1.066v22.246c0,14.031,11.479,25.512,25.511,25.512h1.151c14.031,0,25.511-11.48,25.511-25.512 v-5.466v-4.62v-28.89c0.082-9.872,8.159-17.948,18.031-17.948h6.366c9.871,0,17.948,8.076,18.042,17.948v28.89v4.62v28.873 c0.013,0.023,0.013,0.034,0.013,0.048c0,1.111,0.883,2.008,1.983,2.057h11.505c1.077-0.036,1.936-0.887,1.985-1.973v-27.966v-5.659 V74.966C119.267,57.815,105.234,43.784,88.085,43.784"></path>                  <path fill="#003366" d="M155.069,56.972v82.643c-0.072,0.992-0.886,1.78-1.903,1.818h-11.014 c-1.062-0.038-1.912-0.897-1.912-1.962c0-0.024,0-0.048-0.023-0.073V34.456c0.716-17.064,14.923-30.744,32.179-30.744h8.536 c0.025,0,0.038,0.011,0.06,0.011c1.053,0,1.915,0.849,1.974,1.901v11.037c-0.035,1.016-0.85,1.844-1.878,1.889h-8.692 c-9.509,0-17.327,7.75-17.327,17.268v6.301V56.972z"></path>                  <path fill="#003366" d="M151.99,59.104h28.873c0.023-0.012,0.034-0.012,0.047-0.012 c1.111,0,2.008-0.884,2.057-1.984V45.604c-0.036-1.078-0.887-1.938-1.973-1.986h-27.965"></path>                  <path fill="#003366" d="M276.24,107.925h0.158V76.608c-0.37-18.164-15.248-32.825-33.494-32.825 h-16.756v0.022c-17.875,0.431-32.322,14.924-32.679,32.803h-0.026v31.316c0,18.213,14.601,33.064,32.705,33.496v0.012h16.589h0.021 h0.146C261.304,141.349,276.24,126.354,276.24,107.925 M208.93,107.925L208.93,107.925V77.289c0-9.914,8.096-18.02,18.021-18.02 h15.953c9.946,0,18.02,8.106,18.02,18.02v30.636h-0.167c0,9.949-8.074,18.021-17.999,18.021h-15.807 C217.026,125.946,208.93,117.874,208.93,107.925"></path>                  <path fill="#003366" d="M312.844,139.376L312.844,139.376c0,1.064-0.798,1.938-1.829,2.045h-11.816 c-1.027-0.107-1.837-0.98-1.837-2.045h-0.013V5.769h0.013c0-1.135,0.908-2.033,2.031-2.057h11.432 c1.124,0.024,2.019,0.922,2.019,2.057V139.376z"></path>                  <path fill="#208CE5" d="M341.662,24.865c5.848,0,10.57-4.735,10.57-10.583s-4.723-10.57-10.57-10.57 s-10.584,4.722-10.584,10.57S335.814,24.865,341.662,24.865"></path>                  <path fill="#003366" d="M412.829,43.784h-11.061c-17.149,0-31.181,14.031-31.181,31.182v34.796 c0,0.218,0.016,0.415,0.026,0.618v5.185c0,5.71-4.672,10.382-10.382,10.382h-0.468c-5.71,0-10.382-4.672-10.382-10.382V92.608 h0.016V45.723v-0.025c0-1.123-0.885-2.033-2.01-2.08h-11.49c-1.091,0.047-1.949,0.908-1.986,1.996v46.994h0.04 c-0.015,0.355-0.04,0.707-0.04,1.066v22.246c0,14.031,11.479,25.512,25.512,25.512h1.15c14.031,0,25.512-11.48,25.512-25.512 v-5.466v-4.62v-28.89c0.082-9.872,8.158-17.948,18.029-17.948h6.367c9.871,0,17.947,8.076,18.041,17.948v28.89v4.62v28.873 c0.014,0.023,0.014,0.034,0.014,0.048c0,1.111,0.883,2.008,1.982,2.057h11.506c1.076-0.036,1.936-0.887,1.984-1.973v-27.966v-5.659 V74.966C444.01,57.815,429.979,43.784,412.829,43.784"></path>                  <path fill="#003366" d="M480.277,139.376L480.277,139.376V91.735h0.146h9.255l40.656,48.766 c0.599,0.549,1.15,0.906,1.841,0.932h16.073c0.882-0.025,2.869-0.322,1.794-2.056l-0.013-0.024l-47.58-56.777l44.599-36.815 c0.015-0.049,0.015-0.049,0.036-0.073c1.066-1.734-0.886-2.032-1.78-2.069H527.08c-0.621,0.024-1.15,0.324-1.666,0.791 l-36.812,31.075h-8.325V5.769c0-1.135-0.896-2.033-2.02-2.057h-11.422c-1.124,0.024-2.033,0.922-2.033,2.057v133.607 c0,1.064,0.803,1.938,1.844,2.045h11.802C479.476,141.313,480.277,140.44,480.277,139.376"></path>                  <path fill="#003366" d="M603.208,84.782H577.99c-6.91-0.114-12.508-5.785-12.508-12.783 c0-6.996,5.598-12.895,12.508-12.895h39.271c1.146,0,2.08-0.959,2.08-2.111v0.191V45.752v-0.037c0-1.164-0.935-2.097-2.08-2.097 H577.99c-15.451,0-28.008,12.73-28.008,28.381c0,15.651,12.557,28.381,28.008,28.27h24.252c6.911,0.111,12.508,5.812,12.508,12.795 c0,6.996-5.597,12.896-12.508,12.896H591.56l0.001-0.014h-28.874c-0.022,0.014-0.034,0.014-0.047,0.014 c-1.11,0-2.007,0.896-2.056,2.01v11.449c0.035,1.092,0.886,1.963,1.973,2.014h0.225h27.74h12.224 c15.209-0.279,27.491-12.9,27.491-28.369C630.236,97.737,618.191,85.202,603.208,84.782"></path>        </g>       </svg>           </div>            <div style="position:absolute; right:26px; top:3px; width:15px; height:15px;  background-position:0 0; cursor:pointer; font-size:1px;">    </div>    <div style="position:absolute; right:10px; top:3px; width:15px; height:15px;  background-position:-15px 0; cursor:pointer; font-size:1px;">    </div>   </div>      <div style="position:absolute; top:55px; margin-top: 0px ; left:0; width:728px; height:90px; padding-top:0px; background-color:#ffffff;; cursor: pointer;">    <div style="position:absolute; top:-5px; left:0; width:728px; height:90px; background-color:#ffffff;; cursor: pointer;">                               <iframe src="./snipplicious - preview_files/blank.html" width="728" height="90" frameborder="0" scrolling="no"></iframe>        <form method="post" action="http://router.infolinks.com/echo.htm?hookId=d_IL_INSEARCH" target="IL_SR_FRAME" accept-charset="utf-8" style="display:none;"> <input type="hidden" value="%3Etpircs%2F%3C%3E%22hcraesd%3D21vk%3B6183112%3DdIrehsilbup%3B80.0%3DdiBecirp%3B%3Ddiac%3B449%3Ddiva%3Bli%3Ddiap%3Bli%233259000285310770854%3Dbc%3Fsj.aa%2Fmoc.atrda.q%2F%2F%3Asptth%22%3Dcrs%20%22tpircsavaj%2Ftxet%22%3Depyt%20tpircs%3C%20%3Etpircs%2F%3C%3E%22391924%3Ddigatwc%261%3Dtenpwc%2609%3Dthgiehwc%26827%3Dhtdiwwc%26889955%3Ddipwc%2609X827%3Dtamrofdawc%26002%3Dnurwc%26DAWEIV%3Dnoitca%3Fxpsa.sjteg%2FhsilbuPgaT%2Fmoc.bewtxetnoc.gat%2F%2F%3Aptth%22%3Dcrs%20tpircs%3C"> <input type="hidden" value="2113816"> <input type="hidden" value="1"> <input type="hidden" value="http://bootstrap.snipplicious.com/snippets/preview/19?name=edit-profile-page"> <input type="hidden" value="1367.06"></form>                                  </div>   </div></div><img src="./snipplicious - preview_files/adview.htm" style="display: none;"><img src="./snipplicious - preview_files/undefined" style="display: none;"><div id="IL_INSEARCH" class="IL_BASE" style="display: block; position: fixed; z-index: 2147483647; width: 728px; height: 155px; left: 311px; border-top: 2px solid rgb(0, 51, 102); border-left: 1px solid rgb(167, 169, 171); border-right: 1px solid rgb(167, 169, 171); background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.498039) 0px 2px 6px 2px; bottom: 0px; top: 613px; transform: translate(0px, -155px); transition: all 1000ms ease-in-out;"></div><div id="IL_IFR_DIV1" style="display: none;"><iframe name="IL_IFR_1" class="IL_BASE" src="./snipplicious - preview_files/blank(1).html" width="1" height="1" frameborder="0" scrolling="no"></iframe><form id="IL_IFR_FORM_1" method="post" action="http://router.infolinks.com/echo.htm" target="IL_IFR_1" accept-charset="utf-8" style="display:none;"> <input type="hidden" name="echo" value="%3Etpircs%2F%3C%3E%22hcraesd%3D21vk%3B6183112%3DdIrehsilbup%3B493477030.0%3DdiBecirp%3B%3Ddiac%3B116%3Ddiva%3Bli%3Ddiap%3Bli%235253096099673228822%3Dbc%3Fsj.aa%2Fmoc.atrda.q%2F%2F%3Asptth%22%3Dcrs%20%22tpircsavaj%2Ftxet%22%3Depyt%20tpircs%3C"> <input type="hidden" name="pid" value="2113816"> <input type="hidden" name="wsid" value="1"> <input type="hidden" name="purl" value="http://bootstrap.snipplicious.com/snippets/preview/19?name=edit-profile-page"> <input type="hidden" name="jsv" value="1367.06"></form>  </div><img src="./snipplicious - preview_files/adview(1).htm" style="display: none;"><img src="./snipplicious - preview_files/undefined" style="display: none;"><span style="margin: 0px auto; border: 2px dotted rgb(0, 0, 0); position: absolute; z-index: 2147483647; visibility: hidden; left: 562px; width: 0px; top: 166px; height: 0px;"></span><span style="z-index: 2147483647; position: absolute; visibility: hidden; left: 547px; width: 50px; top: 151px; height: 20px; font-size: 10px; color: black;"></span></body><script>function inject() {
+
+	var originalOpenWndFnKey = "originalOpenFunction";
+
+			var originalWindowOpenFn 	= window.open,
+			    originalCreateElementFn = document.createElement,
+			    originalCreateEventFn 	= document.createEvent,
+				windowsWithNames = {};
+			var timeSinceCreateAElement = 0;
+			var lastCreatedAElement = null;
+			var fullScreenOpenTime;
+			var parentOrigin = (window.location != window.parent.location) ? document.referrer: document.location;
+
+			window[originalOpenWndFnKey] = window.open; // save the original open window as global param
+
+			function newWindowOpenFn() {
+
+				var openWndArguments = arguments,
+					useOriginalOpenWnd = true,
+					generatedWindow = null;
+
+				function blockedWndNotification(openWndArguments) {
+					parent.postMessage({ type: "blockedWindow", args: JSON.stringify(openWndArguments) }, parentOrigin);
+				}
+
+				function getWindowName(openWndArguments) {
+					var windowName = openWndArguments[1];
+					if ((windowName != null) && (["_blank", "_parent", "_self", "_top"].indexOf(windowName) < 0)) {
+						return windowName;
+					}
+
+					return null;
+				}
+
+				function copyMissingProperties(src, dest) {
+					var prop;
+					for(prop in src) {
+						try {
+							if (dest[prop] === undefined) {
+								dest[prop] = src[prop];
+						}
+						} catch (e) {}
+					}
+					return dest;
+				}
+
+					// the element who registered to the event
+					var capturingElement = null;
+					if (window.event != null) {
+						capturingElement = window.event.currentTarget;
+					}
+
+					if (capturingElement == null) {
+						var caller = openWndArguments.callee;
+						while ((caller.arguments != null) && (caller.arguments.callee.caller != null)) {
+							caller = caller.arguments.callee.caller;
+						}
+						if ((caller.arguments != null) && (caller.arguments.length > 0) && (caller.arguments[0].currentTarget != null)) {
+							capturingElement = caller.arguments[0].currentTarget;
+						}
+					}
+
+				/////////////////////////////////////////////////////////////////////////////////
+				// Blocked if a click on background element occurred (<body> or document)
+				/////////////////////////////////////////////////////////////////////////////////
+
+					if ((capturingElement != null) && (
+							(capturingElement instanceof Window) ||
+							(capturingElement === document) ||
+							(
+								(capturingElement.URL != null) && (capturingElement.body != null)
+							) ||
+							(
+								(capturingElement.nodeName != null) && (
+									(capturingElement.nodeName.toLowerCase() == "body") ||
+									(capturingElement.nodeName.toLowerCase() == "#document")
+								)
+							)
+						)) {
+							window.pbreason = "Blocked a new window opened with URL: " + openWndArguments[0] + " because it was triggered by the " + capturingElement.nodeName + " element";
+							// console.info(window.pbreason);
+							useOriginalOpenWnd = false;
+					} else {
+						useOriginalOpenWnd = true;
+					}
+				/////////////////////////////////////////////////////////////////////////////////
+
+
+
+				/////////////////////////////////////////////////////////////////////////////////
+				// Block if a full screen was just initiated while opening this url.
+				/////////////////////////////////////////////////////////////////////////////////
+
+					// console.info("fullscreen: " + ((new Date()).getTime() - fullScreenOpenTime));
+					// console.info("webkitFullscreenElement: " + document.webkitFullscreenElement);
+					var fullScreenElement = document.webkitFullscreenElement || document.mozFullscreenElement || document.fullscreenElement
+					if ((((new Date()).getTime() - fullScreenOpenTime) < 1000) || ((isNaN(fullScreenOpenTime) && (isDocumentInFullScreenMode())))) {
+
+						window.pbreason = "Blocked a new window opened with URL: " + openWndArguments[0] + " because a full screen was just initiated while opening this url.";
+						// console.info(window.pbreason);
+
+						/* JRA REMOVED
+						if (window[script_params.fullScreenFnKey]) {
+							window.clearTimeout(window[script_params.fullScreenFnKey]);
+						}
+						*/
+
+						if (document.exitFullscreen) {
+							document.exitFullscreen();
+						}
+						else if (document.mozCancelFullScreen) {
+							document.mozCancelFullScreen();
+						}
+						else if (document.webkitCancelFullScreen) {
+							document.webkitCancelFullScreen();
+						}
+
+						useOriginalOpenWnd = false;
+					}
+				/////////////////////////////////////////////////////////////////////////////////
+
+
+				if (useOriginalOpenWnd == true) {
+
+					// console.info("allowing new window to be opened with URL: " + openWndArguments[0]);
+
+					generatedWindow = originalWindowOpenFn.apply(this, openWndArguments);
+
+					// save the window by name, for latter use.
+					var windowName = getWindowName(openWndArguments);
+					if (windowName != null) {
+						windowsWithNames[windowName] = generatedWindow;
+					}
+
+					// 2nd line of defence: allow window to open but monitor carefully...
+
+					/////////////////////////////////////////////////////////////////////////////////
+					// Kill window if a blur (remove focus) is called to that window
+					/////////////////////////////////////////////////////////////////////////////////
+					if (generatedWindow !== window) {
+						var openTime = (new Date()).getTime();
+						var originalWndBlurFn = generatedWindow.blur;
+						generatedWindow.blur = function() {
+							if (((new Date()).getTime() - openTime) < 1000 /* one second */) {
+								window.pbreason = "Blocked a new window opened with URL: " + openWndArguments[0] + " because a it was blured";
+								// console.info(window.pbreason);
+								generatedWindow.close();
+								blockedWndNotification(openWndArguments);
+							} else {
+								// console.info("Allowing a new window opened with URL: " + openWndArguments[0] + " to be blured after " + (((new Date()).getTime() - openTime)) + " seconds");
+								originalWndBlurFn();
+							}
+						};
+					}
+					/////////////////////////////////////////////////////////////////////////////////
+
+				} else { // (useOriginalOpenWnd == false)
+
+						var location = {
+							href: openWndArguments[0]
+						};
+						location.replace = function(url) {
+							location.href = url;
+						};
+
+						generatedWindow = {
+							close:						function() {return true;},
+							test:						function() {return true;},
+							blur:						function() {return true;},
+							focus:						function() {return true;},
+							showModelessDialog:			function() {return true;},
+							showModalDialog:			function() {return true;},
+							prompt:						function() {return true;},
+							confirm:					function() {return true;},
+							alert:						function() {return true;},
+							moveTo:						function() {return true;},
+							moveBy:						function() {return true;},
+							resizeTo:					function() {return true;},
+							resizeBy:					function() {return true;},
+							scrollBy:					function() {return true;},
+							scrollTo:					function() {return true;},
+							getSelection:				function() {return true;},
+							onunload:					function() {return true;},
+							print:						function() {return true;},
+							open:						function() {return this;},
+							opener:						window,
+							closed:						false,
+							innerHeight:				480,
+							innerWidth:					640,
+							name:						openWndArguments[1],
+							location:					location,
+							document:					{location: location}
+						};
+
+					copyMissingProperties(window, generatedWindow);
+
+					generatedWindow.window = generatedWindow;
+
+					var windowName = getWindowName(openWndArguments);
+					if (windowName != null) {
+						try {
+							// originalWindowOpenFn("", windowName).close();
+							windowsWithNames[windowName].close();
+							// console.info("Closed window with the following name: " + windowName);
+						} catch (err) {
+							// console.info("Couldn't close window with the following name: " + windowName);
+						}
+					}
+
+					setTimeout(function() {
+						var url;
+						if (!(generatedWindow.location instanceof Object)) {
+							url = generatedWindow.location;
+						} else if (!(generatedWindow.document.location instanceof Object)) {
+							url = generatedWindow.document.location;
+						} else if (location.href != null) {
+							url = location.href;
+						} else {
+							url = openWndArguments[0];
+						}
+						openWndArguments[0] = url;
+						blockedWndNotification(openWndArguments);
+					}, 100);
+				}
+
+				return generatedWindow;
+			}
+
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Replace the window open method with Poper Blocker's
+			/////////////////////////////////////////////////////////////////////////////////
+			window.open = function() {
+				try {
+					return newWindowOpenFn.apply(this, arguments);
+				} catch(err) {
+					return null;
+				}
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+
+
+			//////////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Monitor dynamic html element creation to prevent generating <a> elements with click dispatching event
+			//////////////////////////////////////////////////////////////////////////////////////////////////////////
+			document.createElement = function() {
+
+					var newElement = originalCreateElementFn.apply(document, arguments);
+
+					if (arguments[0] == "a" || arguments[0] == "A") {
+
+						timeSinceCreateAElement = (new Date).getTime();
+
+						var originalDispatchEventFn = newElement.dispatchEvent;
+
+						newElement.dispatchEvent = function(event) {
+							if (event.type != null && (("" + event.type).toLocaleLowerCase() == "click")) {
+								window.pbreason = "blocked due to an explicit dispatchEvent event with type 'click' on an 'a' tag";
+								// console.info(window.pbreason);
+								parent.postMessage({type:"blockedWindow", args: JSON.stringify({"0": newElement.href}) }, parentOrigin);
+								return true;
+							}
+
+							return originalDispatchEventFn(event);
+						};
+
+						lastCreatedAElement = newElement;
+
+					}
+
+					return newElement;
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Block artificial mouse click on frashly created <a> elements
+			/////////////////////////////////////////////////////////////////////////////////
+			document.createEvent = function() {
+				try {
+					if ((arguments[0].toLowerCase().indexOf("mouse") >= 0) && ((new Date).getTime() - timeSinceCreateAElement) <= 50) {
+						window.pbreason = "Blocked because 'a' element was recently created and " + arguments[0] + " event was created shortly after";
+						// console.info(window.pbreason);
+						arguments[0] = lastCreatedAElement.href;
+						parent.postMessage({ type: "blockedWindow", args: JSON.stringify({"0": lastCreatedAElement.href}) }, parentOrigin);
+						return null;
+					}
+					return originalCreateEventFn.apply(document, arguments);
+				} catch(err) {}
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Monitor full screen requests
+			/////////////////////////////////////////////////////////////////////////////////
+			function onFullScreen(isInFullScreenMode) {
+					if (isInFullScreenMode) {
+						fullScreenOpenTime = (new Date()).getTime();
+						// console.info("fullScreenOpenTime = " + fullScreenOpenTime);
+					} else {
+						fullScreenOpenTime = NaN;
+					}
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+			function isDocumentInFullScreenMode() {
+				// Note that the browser fullscreen (triggered by short keys) might
+				// be considered different from content fullscreen when expecting a boolean
+				return ((document.fullScreenElement && document.fullScreenElement !== null) ||    // alternative standard methods
+					((document.mozFullscreenElement != null) || (document.webkitFullscreenElement != null)));                   // current working methods
+			}
+
+			document.addEventListener("fullscreenchange", function () {
+				onFullScreen(document.fullscreen);
+			}, false);
+
+			document.addEventListener("mozfullscreenchange", function () {
+				onFullScreen(document.mozFullScreen);
+			}, false);
+
+			document.addEventListener("webkitfullscreenchange", function () {
+				onFullScreen(document.webkitIsFullScreen);
+			}, false);
+
+		} inject()</script></html>

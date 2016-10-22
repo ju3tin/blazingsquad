@@ -1,0 +1,594 @@
+LINX = window.LINX ? window.LINX : (function () {
+
+    var EXTRACTINATOR    = 'http://psdata.chitika.net/extract?';
+    var LINX_JS          = 'http://scripts.chitika.net/apps/linx.js';
+    var LINX_BACKGROUND  = 'url(http://images.chitika.net/apps/linx/bg.png)';
+    var LINX_CLOSE       = 'http://images.chitika.net/buttons/close_round_white_on_red.png';
+    var LINX_FALLBACK    = 'http://scripts.chitika.net/apps/linx-fallback.js';
+    var LINX_SPINNER     = 'http://images.chitika.net/spinner.gif';
+    var MM               = 'http://mm.chitika.net/minimall?';
+    var MM_CHEWEY        = 'http://mm.chitika.net/chewey?';
+    var MM_ROUTER        = 'http://mm.chitika.net/route?';
+
+    var AD_CLICK_URLS    = {};
+    var CURR_PLACEMENT   = 1;
+    var HEIGHT           = 125;
+    var MAX_WORDS        = 10;
+    var PUBLISHER        = window.ch_client ? window.ch_client : 'demo';
+    var TAGS             = ['p', 'li', 'div', 'span', 'article', 'section'];
+    var TEXT_NODE        = 3;
+    var WIDTH            = 304;
+    var WIN_AD           = {};
+    var WIN_STATUS       = {};
+    var WIN_TIMERS       = {};
+
+    var STATUS_MOUSEOUT  = 0;
+    var STATUS_MOUSEOVER = 1;
+    var STATUS_IDLE      = 2;
+
+    var NO_AD            = 0;
+    var AD_DONE          = 1;
+    var AD_LOADING       = 2;
+
+    var psdataScript = document.createElement('script');
+    psdataScript.type = 'text/javascript';
+
+    var info = {
+        linkified : 0
+    };
+    var fired = false;
+    var is_fallback = false;
+
+    // Get the true location and bail if we cant
+    var loc;
+    try {
+        loc = window.top.location.href;
+    } catch(x) {
+        return;
+    }
+
+    if (loc === undefined) {
+        return;
+    }
+
+    // Break out of anonymous iframes
+    if (window.location != window.top.location) {
+        var linx_script = document.createElement('script');
+        linx_script.type = 'text/javascript';
+        linx_script.src = LINX_JS;
+        window.top.ch_client = PUBLISHER;
+        window.top.document.getElementsByTagName('body')[0].appendChild(linx_script);
+        return;
+    }
+
+    var params = [];
+    params.push('u=' + encodeURIComponent(loc));
+    params.push('c=' + 'LINX.main');
+
+    psdataScript.src = EXTRACTINATOR + params.join('&');
+    document.getElementsByTagName('head')[0].appendChild(psdataScript);
+
+    function add_event(obj, event, fn) {
+        if (obj.addEventListener) {
+            obj.addEventListener(event, LINX.normalize_handler(fn));
+            return true;
+        } else if (obj.attachEvent) {
+            obj.attachEvent('on' + event, LINX.normalize_handler(fn));
+            return true;
+        }
+        return false;
+    }
+
+     function call_ad(word, placement) {
+        if (!WIN_AD[placement]) {
+            var link = document.getElementById("ch-link-"+placement);
+            var pos = ch_ad_locate(link);
+            LINX.show_spinner(placement, pos.x-10, pos.y-35);
+            WIN_AD[placement] = AD_LOADING;
+
+            var params = [];
+            params.push('callback='  + 'LINX.show_ad');
+            params.push('cid='       + 'linx');
+            params.push('h='         + HEIGHT);
+            params.push('impsrc='    + 'linx');
+            params.push('output='    + 'simplejs');
+            params.push('product='   + 'linx');
+            params.push('publisher=' + PUBLISHER);
+            params.push('query='     + encodeURIComponent(word));
+            params.push('ref='       + encodeURIComponent(document.referrer));
+            params.push('sid='       + 'linx');
+            params.push('unit_id='   + placement);
+            params.push('url='       + encodeURIComponent(document.location.href));
+            params.push('w='         + WIDTH);
+
+            var ad_url = MM + params.join('&');
+
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = ad_url;
+            document.getElementsByTagName('head')[0].appendChild(script);
+            return true;
+        }
+        return false;
+    }
+
+    function ch_ad_locate(obj) {
+        var objPos = {'x':0,'y':0};
+        try {
+            if (obj.offsetParent) {
+                while(1) {
+                    objPos.x += obj.offsetLeft;
+                    objPos.y += obj.offsetTop;
+                    if (!obj.offsetParent) { break; }
+                    obj = obj.offsetParent;
+                }
+            } else if (obj.x && obj.y) {
+                objPos.x += obj.x;
+                objPos.y += obj.y;
+            }
+        } catch (err) {
+            objPos.x = -1;
+            objPos.y = -1;
+        }
+        return objPos;
+    }
+
+    function check_overlap(start, end, ranges) {
+        for(var i = 0; i < ranges.length; i++) {
+            var range = ranges[i];
+            if (start >= range.start &&
+                start <= range.end) {
+                return false;
+            }
+            if (end >= range.start &&
+                end <= range.end) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function fallback() {
+        if (this.fired === true) return;
+        var fbScript = document.createElement('script');
+        fbScript.type = 'text/javascript';
+        fbScript.src = LINX_FALLBACK;
+        document.getElementsByTagName('head')[0].appendChild(fbScript);
+    }
+
+    function get_event(event) {
+        var e;
+        if (event) e = event;
+
+        else if (window.event)
+            e = window.event;
+
+        if (e.srcElement)
+            e.target = e.srcElement;
+
+        if (e.toElement)
+            e.relatedTarget = e.toElement;
+
+        return e;
+    }
+
+    function create_bubble_mouseout(placement) {
+        return function (event) {
+            WIN_STATUS[placement] = STATUS_MOUSEOUT;
+        }
+    }
+
+    function create_bubble_mouseover(placement) {
+        return function (event) {
+            WIN_STATUS[placement] = STATUS_MOUSEOVER;
+            WIN_TIMERS[placement] = 6000;
+        }
+    }
+
+    function create_click(word, placement) {
+        return function (event) {
+            var count = 0;
+            var timeout = setInterval(function(){
+                if (count > 40) {
+                    clearTimeout(timeout);
+                    var params = [];
+                    params.push('impsrc='    + 'linx');
+                    params.push('publisher=' + PUBLISHER);
+                    params.push('query='     + word);
+                    params.push('source='    + window.location.href);
+
+                    var url = MM_ROUTER + params.join('&');
+
+                    params = []
+                    params.push('event='     + 'click');
+                    params.push('publisher=' + PUBLISHER);
+                    params.push('hc1='       + word);
+                    params.push('redirect='  + encodeURIComponent(url));
+                    params.push('impsrc='    + 'linx');
+
+                    window.location.href = MM_CHEWEY + params.join('&');
+                };
+                if (!AD_CLICK_URLS[placement]){
+                    count++;
+                    return;
+                } else {
+                    clearTimeout(timeout);
+                    window.location.href = AD_CLICK_URLS[placement]+'&linx_word_click=1';
+                }
+            },25);
+        }
+    }
+
+    function create_close(placement) {
+        return function (event) {
+            WIN_STATUS[placement] = STATUS_MOUSEOUT;
+            WIN_TIMERS[placement] = 0;
+            LINX.hide_bubble(placement);
+        }
+    }
+
+    function create_link(word, search) {
+        var spinner = document.createElement('img');
+        spinner.src = LINX_SPINNER;
+        spinner.style.position = 'absolute';
+        spinner.style.zIndex = '99999';
+        spinner.style.display = 'none';
+        spinner.id = "ch-spinner-"+CURR_PLACEMENT;
+        document.getElementsByTagName('body')[0].appendChild(spinner);
+
+        var bubble = document.createElement('div');
+        bubble.className = "ch-hover";
+        bubble.style.position = 'absolute';
+        bubble.style.width = '310px';
+        bubble.style.height = '165px';
+        bubble.style.display = 'none';
+        bubble.style.zIndex = '99999';
+        bubble.style.backgroundImage = LINX_BACKGROUND;
+        bubble.id = "ch-hover-"+CURR_PLACEMENT;
+
+        LINX.add_event(bubble, 'mouseover', LINX.create_bubble_mouseover(CURR_PLACEMENT));
+        LINX.add_event(bubble, 'mouseout', LINX.create_bubble_mouseout(CURR_PLACEMENT));
+
+        var close_btn = document.createElement('img');
+        close_btn.id = 'close_button';
+        close_btn.src = LINX_CLOSE;
+        close_btn.style.position = 'absolute';
+        close_btn.style.top = '9px';
+        close_btn.style.right = '15px';
+        LINX.add_event(close_btn, 'click', LINX.create_close(CURR_PLACEMENT));
+
+        bubble.appendChild(close_btn);
+
+        document.getElementsByTagName('body')[0].appendChild(bubble);
+
+        var link = document.createElement('a');
+        link.id = "ch-link-"+CURR_PLACEMENT;
+        link.href = "javascript:void(0);";
+        link.innerHTML = word;
+        link.rel = search+"|"+CURR_PLACEMENT;
+        link.setAttribute('style', 'color:#0081BD !important; border-bottom:1px dotted #0081BD !important; text-decoration:none !important');
+
+        LINX.add_event(link, 'mouseover', LINX.create_mouseover(link));
+        LINX.add_event(link, 'mouseout', LINX.create_mouseout(link));
+        LINX.add_event(link, 'click', LINX.create_click(word,CURR_PLACEMENT));
+        CURR_PLACEMENT++;
+
+        return link;
+    }
+
+    function create_mouseout(link) {
+        return function (event) {
+            var link = event.target;
+            WIN_STATUS[link.rel.split('|')[1]] = STATUS_MOUSEOUT;
+        }
+    }
+
+    function create_mouseover(link) {
+        return function (event) {
+            var pos = ch_ad_locate(link);
+
+            var t = link.rel.split('|');
+            var search    = t[0];
+            var placement = t[1];
+
+            if (!LINX.call_ad(search, placement) &&
+                WIN_AD[placement] == AD_DONE) {
+                LINX.show_bubble(placement);
+            }
+
+            WIN_STATUS[placement] = STATUS_MOUSEOVER;
+            WIN_TIMERS[placement] = 6000;
+        }
+    }
+
+    function get_text_nodes() {
+        var nodes = [];
+
+        for(var f = 0; f < TAGS.length; f++) {
+            var tag = TAGS[f];
+            var elements = document.getElementsByTagName(tag);
+            for(var u = 0; u < elements.length; u++) {
+                var element = elements[u];
+                for(var c = 0; c < element.childNodes.length; c++) {
+                    var child_node = element.childNodes[c];
+                    if (child_node.nodeType == TEXT_NODE) {
+                        nodes.push(child_node);
+                    }
+                }
+            }
+        }
+
+        return nodes;
+    }
+
+    function hide_all_bubbles(placement) {
+        for(p in WIN_TIMERS) {
+            if (p != placement) {
+                WIN_TIMERS[p] = 0;
+                LINX.hide_bubble(p);
+            }
+        }
+    }
+
+    function hide_bubble(placement) {
+        var bubble = document.getElementById("ch-hover-"+placement);
+        bubble.style.display = 'none';
+    }
+
+    function hide_spinner(placement) {
+        var spinner = document.getElementById("ch-spinner-"+placement);
+        spinner.style.display = 'none';
+    }
+
+    function is_stopper(ch) {
+        return (ch == ' '  ||
+                ch == '.'  ||
+                ch == ','  ||
+                ch == ';'  ||
+                ch == ':'  ||
+                ch == '\n' ||
+                ch == '\r' ||
+                ch == '\t');
+    }
+
+    function main(data) {
+        CHITIKA_ADS.send_event('linx_fired', null, null);
+
+        if (data && data.keywords){
+            this.WORDS = data.keywords;
+        } else if (this.keywords) {
+            this.WORDS = this.keywords;
+            this.is_fallback = true;
+        } else {
+            this.fallback();
+            return;
+        }
+
+        this.info.init_kws = this.WORDS.length;
+        this.info.linked_kws = [];
+        var text_nodes = LINX.get_text_nodes();
+        var all_ranges = [];
+        // Get all the valid ranges...
+        for(var f = 0; f < text_nodes.length; f++) {
+            var text_node = text_nodes[f];
+            var ranges = LINX.search(text_node, f);
+            all_ranges = all_ranges.concat(ranges);
+        }
+
+        // Then sort them be weight and take the best MAX_WORDS
+        all_ranges = all_ranges.sort(function (a, b) { return a.weight - b.weight }).splice(0, MAX_WORDS);
+
+        // Get a list of all the nodes we're highlighting words in
+        var nodes = [];
+        for(var u = 0; u < all_ranges.length; u++) {
+            var range = all_ranges[u];
+            var n = true;
+            for(var k = 0; k < nodes.length; k++) {
+                if (nodes[k] == range.node) {
+                    n = false;
+                }
+            }
+            if (n) {
+                nodes.push(range.node);
+            }
+        }
+
+        // For each node...
+        for(var f = 0; f < nodes.length; f++) {
+            var text_node = nodes[f];
+            var node_ranges = [];
+            // Get the ranges
+            for(var u = 0; u < all_ranges.length; u++) {
+                var range = all_ranges[u];
+                if (range.node == text_node) {
+                    node_ranges.push(range);
+                }
+            }
+            var text = text_node.data;
+            // Sort in reverse order
+            var ranges = node_ranges.sort(function (a, b) { return b.start - a.start });
+
+            var new_nodes = [];
+            var current_pos = 0;
+            var range;
+            // Construct new DOM nodes from ranges
+            while(range = ranges.pop()) {
+                new_nodes.push(document.createTextNode(text.substring(current_pos, range.start)));
+                var w = text.substring(range.start, range.end);
+                new_nodes.push(LINX.create_link(w, range.search));
+                this.info.linked_kws.push(w);
+                this.info.linkified++;
+                current_pos = range.end;
+            }
+            new_nodes.push(document.createTextNode(text.substring(current_pos, text.length)));
+
+            // $$$ bl1ng bl1ng $$$
+            var node;
+            while(node = new_nodes.shift()) {
+                text_node.parentNode.insertBefore(node, text_node);
+            }
+            text_node.parentNode.removeChild(text_node);
+        }
+
+        CHITIKA_ADS.send_event('linx_linkified', null, info);
+        if (this.is_fallback) {
+            CHITIKA_ADS.send_event('linx_fallback', null, info);
+        }
+    }
+
+    function normalize_handler(fn) {
+        return function (event) {
+            return fn(LINX.get_event(event));
+        }
+    }
+
+    function search(text_node, node_pos) {
+        var str = text_node.data;
+        var ranges = [];
+        for(var i = 0; i < this.WORDS.length; i++) {
+            var last_offset = 0;
+            var offset;
+            // Each record is a 3 elem array
+            var word   = this.WORDS[i][0];
+            var search = this.WORDS[i][1];
+            var weight = this.WORDS[i][2];
+            while((offset = str.toLowerCase().substring(last_offset).indexOf(word)) > -1) {
+                if (LINX.validate_range(str, last_offset+offset, last_offset+offset+word.length)) {
+                    var start = last_offset+offset,
+                        end   = last_offset+offset+word.length;
+                    if (LINX.check_overlap(start, end, ranges)) {
+                        ranges.push({ 'node'     : text_node,
+                                      'node_pos' : node_pos,
+                                      'start'    : start,
+                                      'end'      : end,
+                                      'search'   : search,
+                                      'weight'   : weight });
+                    }
+                }
+                last_offset += offset+word.length;
+            }
+        }
+        return ranges;
+    }
+
+    function show_ad() {
+        var mmhtml = window.ch_mmhtml;
+        var placement = mmhtml.unit_id;
+
+        try {
+            var click_url = mmhtml.output.match(/(http:\/\/mm\.chitika\.net\/track[^\"]+)/)[1];
+        }
+        catch (e) {
+            LINX.hide_spinner(placement);
+            return;
+        }
+
+        AD_CLICK_URLS[placement] = click_url;
+        WIN_AD[placement] = AD_DONE;
+
+        LINX.hide_spinner(placement);
+
+        var fobj = document.createElement("iframe");
+        fobj.src = "about:blank";
+        fobj.border = "0";
+        fobj.style.margin = fobj.style.padding = fobj.style.border = 0;
+        fobj.padding = "0";
+        fobj.frameBorder = 0;
+        fobj.marginWidth = 0;
+        fobj.marginHeight = 0;
+        fobj.vspace = 0;
+        fobj.hspace = 0;
+        fobj.scrolling = "no";
+        fobj.setAttribute("class", "chitikaAdBlock");
+        fobj.setAttribute("allowTransparency", "allowTransparency");
+        fobj.width = 302;
+        fobj.height = 121;
+
+        fobj.style.marginLeft = "2px";
+        fobj.style.marginTop = "2px";
+        fobj.style.borderTopRightRadius = "5px 4px";
+        fobj.style.borderTopLeftRadius = "5px 4px";
+
+        var bubble = document.getElementById("ch-hover-"+placement);
+        bubble.appendChild(fobj);
+        fobj.contentWindow.document.open();
+        fobj.contentWindow.document.write(mmhtml.output);
+
+        fobj.contentWindow.document.close();
+        LINX.show_bubble(placement);
+    }
+
+    function show_bubble(placement) {
+        LINX.hide_all_bubbles(placement);
+        var link = document.getElementById("ch-link-"+placement);
+        var pos = ch_ad_locate(link);
+        var bubble = document.getElementById("ch-hover-"+placement);
+        bubble.style.top = (pos.y-165)+"px";
+        bubble.style.left = (pos.x-65)+"px";
+        bubble.style.display = 'block';
+    }
+
+    function show_spinner(placement) {
+        var link = document.getElementById("ch-link-"+placement);
+        var pos = ch_ad_locate(link);
+        var spinner = document.getElementById("ch-spinner-"+placement);
+        spinner.style.top = (pos.y-35)+"px";
+        spinner.style.left = (pos.x-10)+"px";
+        spinner.style.display = 'block';
+    }
+
+    function timer() {
+        setInterval(function () {
+            for(var placement in WIN_STATUS) {
+                var status = WIN_STATUS[placement];
+                if (status == STATUS_MOUSEOUT &&
+                    WIN_AD[placement] == AD_DONE) {
+                    WIN_TIMERS[placement] -= 100;
+                    if (WIN_TIMERS[placement] < 100) {
+                        LINX.hide_bubble(placement);
+                        WIN_STATUS[placement] = STATUS_IDLE;
+                    }
+                }
+            }
+        }, 100);
+    }
+
+    function validate_range(str, start, end) {
+        return ((start == 0 || LINX.is_stopper(str.charAt(start-1))) &&
+                (end == str.length || LINX.is_stopper(str.charAt(end))));
+    }
+
+    return {
+        'add_event'                 : add_event,
+        'call_ad'                   : call_ad,
+        'ch_ad_locate'              : ch_ad_locate,
+        'check_overlap'             : check_overlap,
+        'fallback'                  : fallback,
+        'get_event'                 : get_event,
+        'create_bubble_mouseout'    : create_bubble_mouseout,
+        'create_bubble_mouseover'   : create_bubble_mouseover,
+        'create_click'              : create_click,
+        'create_close'              : create_close,
+        'create_link'               : create_link,
+        'create_mouseout'           : create_mouseout,
+        'create_mouseover'          : create_mouseover,
+        'fired'                     : fired,
+        'get_text_nodes'            : get_text_nodes,
+        'hide_all_bubbles'          : hide_all_bubbles,
+        'hide_bubble'               : hide_bubble,
+        'hide_spinner'              : hide_spinner,
+        'info'                      : info,
+        'is_fallback'               : is_fallback,
+        'is_stopper'                : is_stopper,
+        'main'                      : main,
+        'normalize_handler'         : normalize_handler,
+        'search'                    : search,
+        'show_ad'                   : show_ad,
+        'show_bubble'               : show_bubble,
+        'show_spinner'              : show_spinner,
+        'timer'                     : timer,
+        'validate_range'            : validate_range
+    };
+}());
+
+LINX.ch_linx_cb = LINX.main;

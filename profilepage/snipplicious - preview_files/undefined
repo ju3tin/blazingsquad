@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="author" content="Jan Vorisek">
+	<meta name="description" content="Snipplicious is a gallery of code snippets for web designers, web developers and programmers. Snippets can be easily copied and pasted and will work just out of the box!">
+	<meta name="keywords" content="snippets, bootstrap, php, javascript, css, html">
+	<meta name="robots" content="noindex">
+	<meta name="google-site-verification" content="UxPmjguFDNFXh59ESEIVUbh5g9LzmD8EkptBPhPsBIM">
+
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://snipplicious.com/rss.xml">
+
+	<title>Page Not Found
+</title>
+
+	<link rel="stylesheet" media="screen,projection,tv" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" media="screen,projection,tv" href="/css/font-awesome.min.css">
+	<link rel="stylesheet" media="screen,projection,tv" href="/css/screen.css">
+	<link rel="stylesheet" media="print" href="/css/print.css">
+	<link rel="shortcut icon" href="/favicon.ico?aQ5">
+	
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+<div id="topmenu" class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="http://snipplicious.com">&lt;<strong>snipp</strong>licious /&gt;</a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+<li class="dropdown site-select" >
+		<a class="dropdown-toggle"><i class="fa fa-cogs"></i> Select snippet language <span class="caret"></span></a>
+		<ul class="dropdown-menu" role="menu">
+			<li><a href="/"><i class="fa fa-code"></i> Bootstrap Snippets</a></li>
+			<li><a href="http://php.snipplicious.com"><i class="fa fa-code"></i> PHP Snippets</a></li>
+			<li><a href="http://css.snipplicious.com"><i class="fa fa-code"></i> CSS3 Snippets</a></li>
+		</ul>
+</li>			</ul>
+		</div>
+		<!--/.nav-collapse -->
+	</div>
+</div>
+
+<div id="mainContent" class="container">
+
+	<div id="snippet--flashes"></div>
+<h1 class="page-header">Page Not Found</h1>
+
+<p class="lead">The page you requested could not be found. It is possible that the address is
+incorrect, or that the page no longer exists. Please use a search engine to find
+what you are looking for.</p>
+
+<p><small>error 404</small></p>
+
+	<input type="hidden" name="IL_IN_TAG" value="2">
+
+</div> <!-- /container -->
+
+<hr>
+
+<div id="footer">
+	<div class="container">
+		<p class="text-muted col-md-8 col-xs-12"><a class="navbar-brand" href="http://snipplicious.com">&lt;<strong>snipp</strong>licious /&gt;</a>&nbsp;created &amp; maintained by <a href="mailto:me@janvorisek.net">Jan Vorisek</a> | Snippets released under the <a href="http://snipplicious.com/license">MIT license</a></p>
+		<p class="text-muted col-md-4 col-xs-12 text-right"><a href="http://nette.org/en" target="_blank"><img src="/images/nette-powered.gif" alt="Proudly powered by Nette Framework"></a> <a href="http://php.net" target="_blank"><img src="/images/php-powered.png" alt="Proudly powered by PHP 5"></a> <a href="http://mysql.org" target="_blank"><img src="/images/mysql-powered.jpg" alt="Proudly powered by MySQL Database"></a></p>
+	</div>
+</div>
+
+	<script src="/js/jquery.js"></script>
+	<script src="/js/nette.ajax.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/netteForms.js"></script>
+	<script src="/js/main.js"></script>
+	<script src="/js/ads.js"></script>
+	<script>
+		(function(i,s,o,g,r,a,m){ i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-27218347-4', 'snipplicious.com');
+		ga('send', 'pageview');
+
+	</script>
+	<script type="text/javascript">
+		var infolinks_pid = 2113816;
+		var infolinks_wsid = 1;
+	</script>
+	<script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
+</body>
+</html>
